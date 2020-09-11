@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library' 
+}
+
+version = '0.2.6'
+
+repositories {
+    jcenter() 
+}
+
+dependencies {
+
+	implementation 'com.konghq:unirest-java:3.8.06'
+    
+	testImplementation 'junit:junit:4.12' 
+}
+
+jar {
+    manifest {
+        attributes(
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Built-By'       : System.properties['user.name'],
+            'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+            //'Build-Revision' : versioning.info.commit,
+            'Created-By'     : "Gradle ${gradle.gradleVersion}",
+            'Build-Jdk'      : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+            'Build-OS'       : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}"
+            )
+    }
+}
